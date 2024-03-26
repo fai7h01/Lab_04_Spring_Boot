@@ -25,7 +25,6 @@ public class RecipeService {
         this.faker = faker;
     }
 
-
     public Recipe prepareRecipe(){
         UUID id = UUID.randomUUID();
         String name = faker.food().dish();

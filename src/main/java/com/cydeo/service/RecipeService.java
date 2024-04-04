@@ -1,7 +1,7 @@
 package com.cydeo.service;
 
-import com.cydeo.QuantityType;
-import com.cydeo.RecipeType;
+import com.cydeo.enums.QuantityType;
+import com.cydeo.enums.RecipeType;
 import com.cydeo.model.Ingredient;
 import com.cydeo.model.Recipe;
 import com.cydeo.repository.RecipeRepository;
@@ -26,16 +26,12 @@ public class RecipeService {
     }
 
     public Recipe prepareRecipe(){
-        UUID id = UUID.randomUUID();
-        String name = faker.food().dish();
-        String preparation = faker.lorem().paragraph(5);
-        long duration = faker.number().randomNumber();
 
         List<Ingredient> ingredients = getIngredients();
 
         RecipeType recipeType = RecipeType.BAKED.randomRecipeType();
 
-        Recipe recipe = new Recipe(id, name, duration, preparation, ingredients, recipeType);
+        Recipe recipe = new Recipe(UUID.randomUUID(), faker.food().dish(), faker.number().randomNumber(), faker.lorem().paragraph(5), ingredients, recipeType);
         System.out.println(recipe);
 
         recipeRepository.saveRecipe(recipe);
@@ -48,10 +44,7 @@ public class RecipeService {
     private List<Ingredient> getIngredients(){
         List<Ingredient> ingredients = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            int quantity = faker.number().randomDigit();
-            String ingredientName = faker.food().ingredient();
-            QuantityType quantityType = QuantityType.LB.randomQuantityType();
-            Ingredient ingredient = new Ingredient(ingredientName,quantity, quantityType);
+            Ingredient ingredient = new Ingredient(faker.food().ingredient(),faker.number().randomDigit(), QuantityType.LB.randomQuantityType());
             ingredients.add(ingredient);
         }
         return ingredients;

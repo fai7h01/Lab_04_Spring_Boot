@@ -1,6 +1,6 @@
 package com.cydeo.model;
 
-import com.cydeo.RecipeType;
+import com.cydeo.enums.RecipeType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;

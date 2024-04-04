@@ -1,4 +1,4 @@
-package com.cydeo;
+package com.cydeo.enums;
 
 import java.util.Random;
 

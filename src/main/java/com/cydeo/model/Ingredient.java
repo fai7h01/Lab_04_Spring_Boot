@@ -1,6 +1,6 @@
 package com.cydeo.model;
 
-import com.cydeo.QuantityType;
+import com.cydeo.enums.QuantityType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
